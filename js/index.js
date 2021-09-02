@@ -31,8 +31,8 @@ const displayBook=(books)=>{
   // create book card and show on ui
 if (books.length>0) {
   handleSecondWarning()
-  const shortBooksList=books.slice(0,20)
-total.innerText=`The number of books : ${shortBooksList.length}`
+  const shortBooksList=books.slice(0,30)
+total.innerText=`The number of books : ${books.length}`
 shortBooksList.forEach(book => {
     const{title,author_name,first_publish_year,cover_i,publisher}=book
     const bookDiv=document.createElement('div')
