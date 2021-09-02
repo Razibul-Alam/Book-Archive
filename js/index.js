@@ -13,26 +13,28 @@ const getAllData=async()=>{
     let searchText=saerchField.value
     // empty input value handling
     if (searchText.length===0) {
-      warning.classList.remove('d-none')
+      // warning.classList.remove('d-none')
+      handleWarning('show')
     }
     // data load
    else{
-    spinner.classList.remove('d-none')
+    // spinner.classList.remove('d-none')
+    handleSpinner('show')
     const url=`https://openlibrary.org/search.json?q=${searchText}`
     const res= await fetch(url)
     const data =await res.json()
-    spinner.classList.add('d-none')
+    handleSpinner()
     saerchField.value=''
     displayBook(data.docs)
     console.log(data.docs)
-    warning.classList.add('d-none')
+    handleWarning()
    }
   }
 // display books on ui
 const displayBook=(books)=>{
   // create book card and show on ui
 if (books.length>0) {
-  warning2.classList.add('d-none')
+  handleSecondWarning()
   const shortBooksList=books.slice(0,20)
 total.innerText=`The number of books : ${shortBooksList.length}`
 shortBooksList.forEach(book => {
@@ -56,10 +58,35 @@ shortBooksList.forEach(book => {
 });
 }
 else{
-  warning2.classList.remove('d-none')
+  handleSecondWarning('show')
 }
 
 }
+// handle spinner
+const handleSpinner=(method)=>{
+  if (method==='show') {
+    spinner.classList.remove('d-none')
+    warning.classList.add('d-none')
+  }else{
+    spinner.classList.add('d-none')
+    
+  }
+}
 
-
-
+const handleWarning=(method)=>{
+  if (method==='show') {
+    warning.classList.remove('d-none')
+    warning2.classList.add('d-none')
+  }else{
+    warning.classList.add('d-none')
+  }
+}
+const handleSecondWarning=(method)=>{
+  if (method==='show') {
+    warning2.classList.remove('d-none')
+    warning.classList.add('d-none')
+    
+  }else{
+    warning2.classList.add('d-none')
+  }
+}
