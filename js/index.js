@@ -26,7 +26,7 @@ const getAllData=async()=>{
   }
 
 const displayBook=(books)=>{
-console.log(books.length)
+console.log(books)
 // console.log(books)
 if (books.length>0) {
   warning2.classList.add('d-none')
@@ -40,12 +40,13 @@ newArray.forEach(book => {
     bookDiv.classList.add('col')
     
     bookDiv.innerHTML=`
-    <div class="card h-100">
+    <div class="card h-75">
     <img src="https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg" class="card-img-top h-50" alt="...">
     <div class="card-body">
       <h5 class="card-title">${book?.title}</h5>
-      <h6>${book?.author_name?.[0]}</h6>
-      <h6>${book?.first_publish_year}</h6>
+      <h6>Author:${book?.author_name?.[0]}</h6>
+      <h6>Published Year :${book?.first_publish_year}</h6>
+      <h6>Publisher:${book?.publisher[0]}</h6>
     </div>
     
   </div>
