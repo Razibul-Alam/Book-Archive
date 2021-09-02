@@ -42,9 +42,9 @@ shortBooksList.forEach(book => {
     <img src="https://covers.openlibrary.org/b/id/${cover_i}-M.jpg" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${title}</h5>
-      <h6>Author:${author_name?.[0]??'unknown'}</h6>
-      <h6>Published Year :${first_publish_year??'unknown'}</h6>
-      <h6>Publisher:${publisher?.[0]??'unknown'}</h6>
+      <h6>Author: ${author_name?.[0]??'unknown'}</h6>
+      <h6>Published Year : ${first_publish_year??'unknown'}</h6>
+      <h6>Publisher: ${publisher?.[0]??'unknown'}</h6>
     </div>
     
   </div>
