@@ -3,12 +3,17 @@ const bookContainer=document.getElementById('book-container')
 const spinner=document.getElementById('spinner')
 const total=document.getElementById('total')
 const warning=document.getElementById('warning')
+const warning2=document.getElementById('warning2')
 
 
 const getAllData=async()=>{
   total.innerText=''
     bookContainer.innerHTML=''
     let searchText=saerchField.value
+    if (searchText.length===0) {
+      warning.classList.remove('d-none')
+    }
+   else{
     spinner.classList.remove('d-none')
     const url=`https://openlibrary.org/search.json?q=${searchText}`
     const res= await fetch(url)
@@ -16,12 +21,16 @@ const getAllData=async()=>{
     spinner.classList.add('d-none')
     saerchField.value=''
     displayBook(data.docs)
+    warning.classList.add('d-none')
+   }
   }
 
 const displayBook=(books)=>{
 console.log(books.length)
 // console.log(books)
-const newArray=books.slice(0,20)
+if (books.length>0) {
+  warning2.classList.add('d-none')
+  const newArray=books.slice(0,20)
 total.innerText=`The number of books : ${newArray.length}`
 newArray.forEach(book => {
     // console.log(book)
@@ -45,6 +54,10 @@ newArray.forEach(book => {
   bookContainer.appendChild(bookDiv)
 
 });
+}
+else{
+  warning2.classList.remove('d-none')
+}
 
 }
 
