@@ -23,7 +23,6 @@ const getAllData=async()=>{
     handleSpinner()
     saerchField.value=''
     displayBook(data.docs)
-    console.log(data.docs)
     handleWarning()
    }
   }
