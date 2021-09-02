@@ -34,19 +34,18 @@ if (books.length>0) {
 total.innerText=`The number of books : ${newArray.length}`
 newArray.forEach(book => {
     // console.log(book)
-    const{title,author_name,first_publish_year,cover_i}=book
-    console.log(cover_i)
+    // const{title,author_name,first_publish_year,cover_i}=book
+    // console.log(cover_i)
     const bookDiv=document.createElement('div')
     bookDiv.classList.add('col')
     
     bookDiv.innerHTML=`
     <div class="card h-100">
-    <img src="https://covers.openlibrary.org/b/id/${cover_i}-M.jpg" class="card-img-top h-50" alt="...">
+    <img src="https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg" class="card-img-top h-50" alt="...">
     <div class="card-body">
-      <h5 class="card-title">${title}</h5>
-      <h6>${author_name}</h6>
-      <h6>${first_publish_year}</h6>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <h5 class="card-title">${book?.title}</h5>
+      <h6>${book?.author_name?.[0]}</h6>
+      <h6>${book?.first_publish_year}</h6>
     </div>
     
   </div>
