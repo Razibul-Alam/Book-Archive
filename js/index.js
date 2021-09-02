@@ -11,14 +11,11 @@ const getAllData=async()=>{
   total.innerText=''
     bookContainer.innerHTML=''
     let searchText=saerchField.value
-    // empty input value handling
     if (searchText.length===0) {
-      // warning.classList.remove('d-none')
       handleWarning('show')
     }
     // data load
    else{
-    // spinner.classList.remove('d-none')
     handleSpinner('show')
     const url=`https://openlibrary.org/search.json?q=${searchText}`
     const res= await fetch(url)
@@ -42,8 +39,8 @@ shortBooksList.forEach(book => {
     const bookDiv=document.createElement('div')
     bookDiv.classList.add('col')
     bookDiv.innerHTML=`
-    <div class="card h-75">
-    <img src="https://covers.openlibrary.org/b/id/${cover_i}-M.jpg" class="card-img-top h-50" alt="...">
+    <div class="card h-100">
+    <img src="https://covers.openlibrary.org/b/id/${cover_i}-M.jpg" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${title}</h5>
       <h6>Author:${author_name?.[0]??'unknown'}</h6>
@@ -72,7 +69,7 @@ const handleSpinner=(method)=>{
     
   }
 }
-
+// handle empty search input
 const handleWarning=(method)=>{
   if (method==='show') {
     warning.classList.remove('d-none')
@@ -81,12 +78,12 @@ const handleWarning=(method)=>{
     warning.classList.add('d-none')
   }
 }
+// handle invalid book name
 const handleSecondWarning=(method)=>{
   if (method==='show') {
     warning2.classList.remove('d-none')
     warning.classList.add('d-none')
-    
-  }else{
+    }else{
     warning2.classList.add('d-none')
   }
 }
